@@ -1,0 +1,27 @@
+<table width="100%">
+  <tr>
+    <td>
+      <%- form.label("title") %><br />
+      <%- form.input("title") %>
+    </td>
+    <td>
+      <%- form.label("path") %><br />
+      <%- form.input("path") %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <%- form.label("content") %><br />
+      <textarea name="content" id="content" style="width: 650px; font-size: 14pt; height: 520px; border: 1px solid #999; font-family: DejaVu Sans Mono, fixed; color: #666;"><%- page.content %></textarea>
+    </td>
+    <td>
+      <%- form.label("preview") %><br />
+      <div class="wmd-preview content" id="preview" style='width: 650px; border: 1px solid #999; max-height: 520px; padding: 10px; overflow: auto;'></div>
+    </td>
+  </tr>
+</table>
+<style>
+  .wrap {
+    width: 1350px;
+  }
+</style>

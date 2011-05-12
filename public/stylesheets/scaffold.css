@@ -1,0 +1,94 @@
+body {
+  padding: 0px;
+}
+body, table, input, select {
+  font-family: DejaVu Sans Mono, fixed;
+  font-size: 14pt;
+  line-height: 150%;
+  color: #444;
+}
+
+h1 {
+  line-height: 3em;
+  font-size: 1.3em;
+}
+
+.helper, .helper * {
+  font-size: 12px;
+}
+
+a, a:link, a:visited, a:active, a:hover {
+  color: #479;
+}
+
+.wrap {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  padding-left: 25px;
+  padding-top: 25px;
+  height: 50px;
+  clear: both;
+}
+
+label.error {
+  color: #900;
+}
+
+.content {
+  padding-left: 50px;
+  clear: both;
+}
+
+a.small {
+  font-size: 12px;
+}
+
+.flash {
+  height: 30px;
+  font-family: DejaVu Sans Mono, fixed;
+  font-size: 14pt;
+  border-radius: 5px;
+  display: none;
+  float: left;
+  position: absolute;
+  left: 400px;
+  top: -60px;
+  padding: 10px 50px 5px 10px;;
+  line-height: 25px;
+  white-space: nowrap;
+}
+
+p.close {
+  margin: 0;
+  display: block;
+  height: 10px;
+  right: 30px;
+  position: absolute;
+  top: 10px;
+  width: 10px;
+  cursor: pointer;
+}
+
+.error {
+  background: #fee;
+  color: #d44;
+  border: 5px solid #fdd;
+}
+
+.info {
+  background: #efe;
+  color: #090;
+  border: 5px solid #dfd;
+}
+
+.drag-me {
+  background: #eef;
+  cursor: move;
+}
+
+.draggable {
+  cursor: move;
+}

@@ -1,0 +1,135 @@
+body {
+  padding: 0px;
+}
+body, table, input, select {
+  font-family: DejaVu Sans Mono, fixed;
+  font-size: 12pt;
+  line-height: 150%;
+  color: #444;
+}
+
+h1 {
+  line-height: 3em;
+  font-size: 1.3em;
+}
+
+.helper, .helper * {
+  font-size: 12px;
+}
+
+a, a:link, a:visited, a:active, a:hover {
+  color: #479;
+}
+
+.wrap {
+  width: 700px;
+  margin: 0 auto;
+}
+
+label.error {
+  color: #900;
+}
+
+.content {
+  clear: both;
+}
+
+a.small {
+  font-size: 12px;
+}
+
+.flash {
+  height: 30px;
+  font-family: DejaVu Sans Mono, fixed;
+  font-size: 14pt;
+  border-radius: 5px;
+  display: none;
+  float: left;
+  position: absolute;
+  left: 400px;
+  top: -60px;
+  padding: 10px 50px 5px 10px;;
+  line-height: 25px;
+  white-space: nowrap;
+}
+
+p.close {
+  margin: 0;
+  display: block;
+  height: 10px;
+  right: 30px;
+  position: absolute;
+  top: 10px;
+  width: 10px;
+  cursor: pointer;
+}
+
+.error {
+  background: #fee;
+  color: #d44;
+  border: 5px solid #fdd;
+}
+
+.info {
+  background: #efe;
+  color: #090;
+  border: 5px solid #dfd;
+}
+
+.menu ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 100%;
+  border-top: 3px solid #eee;
+  border-bottom: 3px solid #eee;
+}
+.menu ul li {
+  display: inline;
+  margin: 0;
+  padding: 5px 10px 5px 10px;
+  white-space: nowrap;
+  line-height: 23px;
+}
+.menu ul li.active {
+  background: #eee;
+}
+
+.content {
+}
+
+h1.title {
+  font-size: 20pt;
+}
+
+.content h2 {
+  color: #888;
+  font-size: 18pt;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+pre {
+  margin: 1em 0px;
+  background: #555;
+  padding: 10px;
+  line-height: 100%;
+}
+
+pre code {
+  background: #555;
+  color: #ddd;
+  font-size: 14px;
+  line-height: 19px;
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: Monospace;
+  color: #444;
+  font-weight: 700;
+}
+
+.content ul {
+  list-style-type: circle;
+}

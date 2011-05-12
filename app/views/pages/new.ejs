@@ -1,0 +1,7 @@
+<h1>New page</h1>
+
+<% form_for(page, {action: path_to.pages, method: 'POST', id: "page_form"}, function (form) { %>
+  <%- partial('pages/form.ejs', {locals: {form: form, page: page}}) %>
+  <%- form.submit('Create page') %> or
+  <%- link_to('Cancel', path_to.pages) %>
+<% });%>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Controller page: <%= title %></title>
+    <%- stylesheet_link_tag('reset', 'style', 'scaffold') %>
+    <%- javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'rails', 'application', 'scaffold') %>
+  </head>
+  <body>
+    <% var flash = request.flash('info').pop(); if (flash) { %>
+    <div class="flash info"><%- flash %></div>
+    <% } %>
+
+    <% flash = request.flash('error').pop(); if (flash) { %>
+    <div class="flash error"><%- flash %></div>
+    <% }; %>
+
+    <div class="wrap">
+      <%- body %>
+    </div>
+    <script>
+      wmd_options = {
+        output: "markdown"
+      };
+    </script>
+    <script src='/javascripts/wmd/wmd.js'></script>
+  </body>
+</html>

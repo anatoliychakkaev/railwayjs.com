@@ -1,0 +1,4 @@
+<h1>Details of page</h1>
+<%- link_to('Edit', path_to.edit_page(page)) %>
+<%- link_to('Delete', path_to.page(page), {method: 'delete', remote: true, jsonp: '(function (u) { location.href = u; })'}) %><br/>
+<%- link_to('Back to index', path_to.pages) %>

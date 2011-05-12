@@ -1,0 +1,20 @@
+<h1>Site Pages</h1>
+
+<table width="100%" class="sortable">
+  <% pages.forEach(function (page) { %>
+  <tr data-index="<%= page.position %>" data-path="<%= page.path %>">
+    <td class="draggable">
+      <%= page.path %>
+    </td>
+    <td>
+      <%= page.title %>
+    </td>
+    <td>
+      <%- link_to('Edit', path_to.edit_page(page)) %>
+      <%- link_to('Delete', path_to.page(page), {method: 'delete', remote: true, jsonp: '(function (u) {location.href = u;})'}) %><br/>
+    </td>
+  </tr>
+  <% }); %>
+</table>
+
+<%- link_to('New page', path_to.new_page) %>

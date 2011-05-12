@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- stylesheet_link_tag('reset', 'style') %>
+    <%- javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'rails', 'application') %>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <h1>
+          <%= page.title %>
+        </h1>
+        <%- page.menu() ->
+      </div>
+      <%- body %>
+    </div>
+  </body>
+</html>

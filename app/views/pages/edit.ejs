@@ -1,0 +1,7 @@
+<h1>Edit page</h1>
+
+<% form_for(page, {action: path_to.page(page), method: 'PUT', id: "page_form"}, function (form) { %>
+  <%- partial('pages/form.ejs', {locals: {form: form, page: page}}) %>
+  <%- form.submit('Update page') %> or
+  <%- link_to('Cancel', path_to.page(page)) %>
+<% });%>
