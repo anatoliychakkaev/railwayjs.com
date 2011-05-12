@@ -59,6 +59,6 @@ require("./.railway/lib/onrailway").init(__dirname, app);
 // Only listen on $ node app.js
 
 if (!module.parent) {
-    app.listen(3000);
+    app.listen(8808);
     console.log("Express server listening on port %d", app.address().port)
 }
