@@ -1,0 +1,3 @@
+[submodule ".railway"]
+	path = .railway
+	url = git@github.com:1602/express-on-railway.git
