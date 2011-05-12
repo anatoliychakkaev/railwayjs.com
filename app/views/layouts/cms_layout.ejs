@@ -11,13 +11,15 @@
         <h1 class="title">
           <%= page.title %>
         </h1>
+        <% if (user) { %>
+          <%- link_to('Edit', edit_page(page)) %>
+        <% } %>
       </div>
       <div class="menu">
         <%- menu(page) %>
       </div>
       <div class="content">
         <%- body %>
-        <%- link_to('Edit', edit_page(page)) %>
       </div>
     </div>
   </body>

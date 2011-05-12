@@ -30,7 +30,7 @@ namespace :deploy do
 
   desc "Symlink config files"
   task :symlink_configs, :roles => :app do
-    %w[app_config.yml database.json].each do |f|
+    %w[app_config.yml].each do |f|
       run "ln -sf #{shared_path}/config/#{f} #{release_path}/config/#{f}"
     end
   end
@@ -80,4 +80,4 @@ end
 
 before 'deploy:setup', 'deploy:create_deploy_to_with_sudo'
 after 'deploy:setup', 'deploy:write_upstart_script'
-after "deploy:finalize_update", "deploy:cleanup", "deploy:update_submodules"#, "deploy:symlink_configs", "deploy:check_packages"
+after "deploy:finalize_update", "deploy:cleanup", "deploy:update_submodules", "deploy:symlink_configs"#, "deploy:check_packages"

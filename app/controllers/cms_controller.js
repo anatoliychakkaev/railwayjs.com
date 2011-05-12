@@ -1,3 +1,5 @@
+load('application')
+
 action("page", function () {
     var path = req.params[0];
     var page = Page.index[path];

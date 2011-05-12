@@ -1,3 +1,7 @@
+load 'application'
+
+before use 'userRequired'
+
 loadPage = ->
     Page.findById req.params.id, (err, page) =>
         if err or !page
