@@ -1,5 +1,6 @@
 body {
   padding: 0px;
+  background: #f3f3f3;
 }
 body, table, input, select {
   font-family: DejaVu Sans Mono, fixed;
@@ -80,44 +81,51 @@ p.close {
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 100%;
-  border-top: 3px solid #eee;
-  border-bottom: 3px solid #eee;
+  border-top: 3px solid #ddd;
+  border-bottom: 3px solid #ddd;
 }
 .menu ul li {
   display: inline;
   margin: 0;
-  padding: 5px 10px 5px 10px;
+  padding: 10px;
   white-space: nowrap;
-  line-height: 23px;
+  line-height: 33px;
 }
 .menu ul li.active {
-  background: #eee;
+  background: #ddd;
+  color: #666;
+  font-weight: 700;
 }
 
 .content {
 }
 
 h1.title {
-  font-size: 20pt;
+  font-size: 25pt;
 }
 
 .content h2 {
-  color: #888;
   font-size: 18pt;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
+h1, h2, h3 {
+  color: #999;
+  /* text-indent: -40px; */
+  text-shadow: 1px 1px 1px #fff;
+}
+
 pre {
   margin: 1em 0px;
-  background: #555;
+  background: #e8e8e8;
   padding: 10px;
   line-height: 100%;
+  border-radius: 2px;
 }
 
 pre code {
-  background: #555;
-  color: #ddd;
+  color: #222;
   font-size: 14px;
   line-height: 19px;
   margin: 0;
@@ -126,8 +134,8 @@ pre code {
 
 code {
   font-family: Monospace;
-  color: #444;
-  font-weight: 700;
+  color: #222;
+  font-weight: 600;
 }
 
 .content ul {
