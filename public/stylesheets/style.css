@@ -3,7 +3,7 @@ body {
   background: #f3f3f3;
 }
 body, table, input, select {
-  font-family: DejaVu Sans Mono, fixed;
+  font-family: DejaVu Sans Mono, verdana, fixed;
   font-size: 12pt;
   line-height: 150%;
   color: #444;
@@ -122,6 +122,7 @@ pre {
   padding: 10px;
   line-height: 100%;
   border-radius: 2px;
+  overflow: auto;
 }
 
 pre code {
