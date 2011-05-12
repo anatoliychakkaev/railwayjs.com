@@ -86,3 +86,27 @@ action 'reorder', ->
                     Page.getSorted().forEach (p) ->
                         console.log p.pos
                     send 'ok'
+
+action 'backup', ->
+    require('fs').writeFileSync(app.root + '/db/dump.json', JSON.stringify(Page.getSorted().map (page) -> page.doc))
+    send 'ok'
+
+action 'restore', ->
+    wait = 0
+    waitSaving = 0
+    saved = ->
+        if --waitSaving == 0
+            send '0k'
+    done = ->
+        if --wait == 0
+            pages = JSON.parse(require('fs').readFileSync(app.root + '/db/dump.json').toString('utf8'))
+            pages.forEach (page) ->
+                delete page._id
+                p = new Page(page)
+                waitSaving += 1
+                p.save(saved)
+
+    Page.find (err, pages) ->
+        pages.forEach (page) ->
+            wait += 1
+            page.remove(done)
