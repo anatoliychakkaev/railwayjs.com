@@ -104,6 +104,10 @@ h1.title {
   font-size: 25pt;
 }
 
+h1.title a {
+  text-decoration: none;
+}
+
 .content h2 {
   font-size: 18pt;
   padding-top: 20px;

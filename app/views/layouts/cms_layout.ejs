@@ -25,7 +25,7 @@
     <div class="wrap">
       <div class="header">
         <h1 class="title">
-          <%= page.title %>
+          <a href="/">Railway</a><%= page.title !== 'Railway' ? ' / ' + page.title : '' %>
         </h1>
         <% if (user) { %>
           <%- link_to('Edit', edit_page(page)) %>
