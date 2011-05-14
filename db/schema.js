@@ -46,3 +46,17 @@ PageSchema.add({
 });
 mongoose.model("Page", PageSchema);
 module.exports["Page"] = mongoose.model("Page");
+
+
+/**
+ * Comment
+ */
+var CommentSchema = new Schema;
+CommentSchema.add({
+    path:   { type: String, index: true },
+    author: { type: String },
+    text:   { type: String },
+    date:   { type: Date   }
+});
+mongoose.model("Comment", CommentSchema);
+module.exports["Comment"] = mongoose.model("Comment");

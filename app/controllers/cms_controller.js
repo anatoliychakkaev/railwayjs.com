@@ -1,15 +1,22 @@
 load('application')
 
 action("page", function () {
+    console.log(req.session.twitter);
     var path = req.params[0];
     var page = Page.index[path];
     if (page) {
+        if (page.comments) {
+            done();
+        } else {
+            page.loadComments(done);
+        }
+    } else {
+        redirect('/pages/new?path=' + path);
+    }
+    function done () {
         render({
             title: page.title,
             page: page
         });
-    } else {
-        redirect('/pages/new?path=' + path);
-        // send("No routes matched with " + path);
     }
 });

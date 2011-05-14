@@ -34,3 +34,10 @@ Page.prototype.siblings = ->
 Page.prototype.htmlContent = ->
     require('markdown-js').makeHtml @content
 
+Page.pathCommentable = (path) ->
+    !!Page.index[path]
+
+Page.prototype.loadComments = (done) ->
+    Comment.find {path: @path}, (err, comments) =>
+        @comments = comments || []
+        done()

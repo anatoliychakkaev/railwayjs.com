@@ -1,0 +1,9 @@
+<h1>Index of comment</h1>
+
+<% comments.forEach(function (comment) { %>
+  comment #<%= comment.id %>
+  <%- link_to('Edit', path_to.edit_comment(comment)) %>
+  <%- link_to('Delete', path_to.comment(comment), {method: 'delete', remote: true, jsonp: '(function (u) {location.href = u;})'}) %><br/>
+<% }); %>
+
+<%- link_to('New comment', path_to.new_comment) %>

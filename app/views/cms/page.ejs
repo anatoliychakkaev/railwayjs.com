@@ -1,1 +1,23 @@
 <%- page.htmlContent() %>
+
+<% if (page.path !== '/') { %>
+  <h2 id="discussion">Discussion</h2>
+
+  <% if (request.session.twitter) { %>
+    <% form_for('', {action: path_to.comments}, function (form) { %>
+      Leave comment as <%- request.session.twitter.screen_name %><br />
+      <%- form.input('path', {type: 'hidden', value: page.path}) %>
+      <%- form.textarea('text') %><br />
+      <%- form.submit('Post comment') %>
+    <% }); %>
+  <% } else { %>
+    <%- link_to('Connect with twitter', '/twitter_connect') %> to leave comment.
+  <% } %>
+
+  <% page.comments.forEach(function (comment) { %>
+    <div class="comment">
+      <%- comment.author %><br />
+      <%- sanitize(comment.text) %>
+    </div>
+  <% }); %>
+<% } %>

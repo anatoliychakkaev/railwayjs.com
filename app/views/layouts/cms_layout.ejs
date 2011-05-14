@@ -22,6 +22,13 @@
     </script>
   </head>
   <body>
+    <% var flash = request.flash('info').pop(); if (flash) { %>
+    <div class="flash info"><%- flash %></div>
+    <% } %>
+
+    <% flash = request.flash('error').pop(); if (flash) { %>
+    <div class="flash error"><%- flash %></div>
+    <% }; %>
     <div class="wrap">
       <div class="header">
         <h1 class="title">

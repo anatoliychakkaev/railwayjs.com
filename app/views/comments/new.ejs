@@ -1,0 +1,7 @@
+<h1>New comment</h1>
+
+<% form_for(comment, {action: path_to.comments, method: 'POST', id: "comment_form"}, function (form) { %>
+  <%- partial('comments/form.ejs', {locals: {form: form, comment: comment}}) %>
+  <%- form.submit('Create comment') %> or
+  <%- link_to('Cancel', path_to.comments) %>
+<% });%>
