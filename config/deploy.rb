@@ -30,7 +30,7 @@ namespace :deploy do
 
   desc "Symlink config files"
   task :symlink_configs, :roles => :app do
-    %w[app_config.yml twitter.yml].each do |f|
+    %w[app_config.yml twitter.yml mailer.yml].each do |f|
       run "ln -sf #{shared_path}/config/#{f} #{release_path}/config/#{f}"
     end
   end

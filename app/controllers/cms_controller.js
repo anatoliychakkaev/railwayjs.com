@@ -1,7 +1,6 @@
 load('application')
 
 action("page", function () {
-    console.log(req.session.twitter);
     var path = req.params[0];
     var page = Page.index[path];
     if (page) {

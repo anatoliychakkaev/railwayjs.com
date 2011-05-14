@@ -3,9 +3,11 @@ action('create', function () {
     if (!Page.pathCommentable(path)) {
         return error('/');
     }
-    var author = req.session.twitter;
+    var author = req.session.twitter,
+        authorName = author.name || author.screen_name;
+
     req.comment = new Comment({
-        author: author.name || author.screen_name,
+        author: authorName,
         text: req.body.text,
         path: path,
         twid: author.id,
@@ -17,8 +19,17 @@ action('create', function () {
             return error();
         } else {
             flash('info', 'Comment created');
-            Page.index[path].loadComments(function () {
+            var page = Page.index[path];
+            page.loadComments(function () {
                 redirect(app.config.url + path + '#discussion');
+                app.extensions.mailer.sendEmail('comment', {
+                    comment: req.comment,
+                    author: author,
+                    page: page
+                }, {
+                    email: app.config.email,
+                    subject: authorName + ' commented on ' + page.title
+                });
             });
         }
     });
