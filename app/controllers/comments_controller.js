@@ -18,7 +18,7 @@ action('create', function () {
         } else {
             flash('info', 'Comment created');
             Page.index[path].loadComments(function () {
-                redirect(path + '#discussion');
+                redirect(app.config.url + path + '#discussion');
             });
         }
     });
