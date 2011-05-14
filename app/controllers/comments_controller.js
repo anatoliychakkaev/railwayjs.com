@@ -28,3 +28,18 @@ action('create', function () {
         redirect(path);
     }
 });
+
+action('destroy', function () {
+    Comment.findById(req.param('id'), function (err, comment) {
+        if (comment && req.session.twitter && req.session.twitter.id == comment.twid) {
+            var page = Page.index[comment.path];
+            comment.remove(function () {
+                page.loadComments(function () {
+                    send('location.href = location.href');
+                });
+            });
+        } else {
+            send('');
+        }
+    });
+});

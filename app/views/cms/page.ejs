@@ -9,7 +9,7 @@
         <% if (request.session.twitter && request.session.twitter.profile_image_url) { %>
           <img src="<%= request.session.twitter.profile_image_url %>" class="avatar" />
         <% } %>
-        Leave comment as <%- request.session.twitter.screen_name %><br />
+        Leave comment as <%- request.session.twitter.name || request.session.twitter.screen_name %><br />
       </div>
       <%- form.input('path', {type: 'hidden', value: page.path}) %>
       <%- form.textarea('text') %><br />
@@ -27,6 +27,9 @@
         <% } %>
         <%- comment.author %>
         <%- comment.timeAgo() %>
+        <% if (request.session.twitter && comment.twid == request.session.twitter.id) { %>
+        <%- link_to('Delete comment', path_to.comment(comment), {remote: true, confirm: 'Are you sure want to delete comment?', method: 'DELETE', jsonp: '(function(){})'}) %>
+        <% } %>
       </div>
       <div class="comment-body">
         <%- sanitize(comment.text) %>

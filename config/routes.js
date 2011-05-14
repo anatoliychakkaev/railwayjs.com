@@ -5,5 +5,5 @@ exports.routes = function (map) {
     map.post('/pages/reorder', 'pages#reorder');
 
     map.get(/^(.*)$/, 'cms#page');
-    map.resources('comments', {only: 'create'});
+    map.resources('comments', {only: ['create', 'destroy']});
 };
