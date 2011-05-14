@@ -39,5 +39,6 @@ Page.pathCommentable = (path) ->
 
 Page.prototype.loadComments = (done) ->
     Comment.find {path: @path}, (err, comments) =>
-        @comments = comments || []
+        @comments = (comments || []).sort (y, x) ->
+            x.date.getTime() - y.date.getTime()
         done()

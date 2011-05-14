@@ -4,8 +4,13 @@
   <h2 id="discussion">Discussion</h2>
 
   <% if (request.session.twitter) { %>
-    <% form_for('', {action: path_to.comments}, function (form) { %>
-      Leave comment as <%- request.session.twitter.screen_name %><br />
+    <% form_for('', {action: path_to.comments, class: 'new-comment'}, function (form) { %>
+      <div class="comment-header">
+        <% if (request.session.twitter && request.session.twitter.profile_image_url) { %>
+          <img src="<%= request.session.twitter.profile_image_url %>" class="avatar" />
+        <% } %>
+        Leave comment as <%- request.session.twitter.screen_name %><br />
+      </div>
       <%- form.input('path', {type: 'hidden', value: page.path}) %>
       <%- form.textarea('text') %><br />
       <%- form.submit('Post comment') %>
@@ -16,8 +21,16 @@
 
   <% page.comments.forEach(function (comment) { %>
     <div class="comment">
-      <%- comment.author %><br />
-      <%- sanitize(comment.text) %>
+      <div class="comment-header">
+        <% if (comment.pic) { %>
+          <img src="<%= comment.pic %>" class="avatar" />
+        <% } %>
+        <%- comment.author %>
+        <%- comment.timeAgo() %>
+      </div>
+      <div class="comment-body">
+        <%- sanitize(comment.text) %>
+      </div>
     </div>
   <% }); %>
 <% } %>

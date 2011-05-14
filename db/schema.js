@@ -55,6 +55,8 @@ var CommentSchema = new Schema;
 CommentSchema.add({
     path:   { type: String, index: true },
     author: { type: String },
+    twid:   { type: Number },
+    pic:    { type: String },
     text:   { type: String },
     date:   { type: Date   }
 });
