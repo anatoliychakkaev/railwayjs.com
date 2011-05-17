@@ -1,3 +1,4 @@
+load('application');
 before(loadComment, {only: ['show', 'destroy', 'update']});
 
 function loadComment () {
