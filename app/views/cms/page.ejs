@@ -32,7 +32,7 @@
         <% } %>
       </div>
       <div class="comment-body">
-        <%- sanitize(comment.text) %>
+        <%- comment.htmlContent() %>
       </div>
     </div>
   <% }); %>

@@ -22,3 +22,6 @@ Comment.prototype.timeAgo = function () {
     }
 };
 
+Comment.prototype.htmlContent = function () {
+    return require('markdown-js').makeHtml(app.helpers.sanitize(this.text));
+};
