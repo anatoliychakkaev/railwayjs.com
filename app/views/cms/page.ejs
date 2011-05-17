@@ -27,8 +27,13 @@
         <% } %>
         <%- comment.author %>
         <%- comment.timeAgo() %>
-        <% if (request.session.twitter && comment.twid == request.session.twitter.id) { %>
-        <%- link_to('Delete comment', path_to.comment(comment), {remote: true, confirm: 'Are you sure want to delete comment?', method: 'DELETE', jsonp: '(function(){})'}) %>
+        <% if (request.session.twitter && comment.twid == request.session.twitter.id || user) { %>
+          <span class="moderate">
+            <a href="#" onclick="return editComment(this, '<%= path_to.comment(comment) %>');">Edit</a>
+            or
+            <%- link_to('delete', path_to.comment(comment), {remote: true, confirm: 'Are you sure want to delete comment?', method: 'DELETE', jsonp: '(function(){})'}) %>
+            comment
+          </span>
         <% } %>
       </div>
       <div class="comment-body">
@@ -37,3 +42,23 @@
     </div>
   <% }); %>
 <% } %>
+
+<script>
+  function editComment (el, url) {
+    $.get(url, function (data) {
+      var $parent = $(el).parents('.comment').find('.comment-body');
+      $parent.html('<form action="' + url + '" method="POST" class="new-comment"><textarea name="text"></textarea><input type="hidden" name="_method" value="PUT"><input type="submit" value="Save" /></form>');
+      $parent.find('textarea').val(data.text);
+      $parent.find('form').submit(function (form) {
+        $.post(url, {
+          '_method': 'PUT',
+          'text': $parent.find('textarea').val()
+        }, function (data) {
+          $parent.html(data.html);
+        }, 'json');
+        return false;
+      });
+    }, 'json');
+    return false;
+  }
+</script>

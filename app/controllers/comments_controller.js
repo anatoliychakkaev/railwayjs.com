@@ -1,3 +1,29 @@
+before(loadComment, {only: ['show', 'destroy', 'update']});
+
+function loadComment () {
+    Comment.findById(req.param('id'), function (err, comment) {
+        if (comment && req.session.twitter && req.session.twitter.id == comment.twid || this.user) {
+            this.comment = comment;
+            next();
+        } else {
+            send(404);
+        }
+    }.bind(this));
+}
+
+action('show', function () {
+    send(this.comment);
+});
+
+action('update', function () {
+    this.comment.text = req.body.text;
+    this.comment.save(function () {
+        send({html: this.comment.htmlContent()});
+        var page = Page.index[this.comment.path];
+        page.loadComments(function () {});
+    }.bind(this));
+});
+
 action('create', function () {
     var path = req.body.path
     if (!Page.pathCommentable(path)) {
@@ -41,16 +67,15 @@ action('create', function () {
 });
 
 action('destroy', function () {
-    Comment.findById(req.param('id'), function (err, comment) {
-        if (comment && req.session.twitter && req.session.twitter.id == comment.twid) {
-            var page = Page.index[comment.path];
-            comment.remove(function () {
-                page.loadComments(function () {
-                    send('location.href = location.href');
-                });
+    var comment = this.comment;
+    if (comment && req.session.twitter && req.session.twitter.id == comment.twid) {
+        var page = Page.index[comment.path];
+        comment.remove(function () {
+            page.loadComments(function () {
+                send('location.href = location.href');
             });
-        } else {
-            send('');
-        }
-    });
+        });
+    } else {
+        send('');
+    }
 });

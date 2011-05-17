@@ -177,3 +177,7 @@ form.new-comment textarea {
 form.new-comment {
   margin-bottom: 10px;
 }
+
+.comment .moderate {
+  float: right;
+}
