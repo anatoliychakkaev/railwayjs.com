@@ -1,5 +1,4 @@
-var app = module.exports = require('express').createServer();
-require("./.railway/lib/onrailway").init(app);
+var app = module.exports = require("./.railway/lib/onrailway").createServer();
 
 if (!module.parent) {
     app.listen(app.settings.env == 'development' ? 8008 : 8808);
