@@ -4,13 +4,11 @@ var express = require('express');
 app.settings.db = JSON.parse(require('fs').readFileSync(__dirname + '/database.json', 'utf-8'))[app.settings.env];
 
 var mongoSessionStore = new mongoStore({
-    maxAge:   31536000000, // session lives forever (expire manually)
     dbname:   app.settings.db.database,
     host:     app.settings.db.host,
     username: app.settings.db.user,
     password: app.settings.db.password
 }, function () {});
-// Configuration
 
 app.configure(function(){
     app.use(express.static(app.root + '/public'));
@@ -19,7 +17,6 @@ app.configure(function(){
     app.set('defaultLocale', 'en');
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    console.log(mongoSessionStore);
     app.use(express.session({secret: 'secret', store: mongoSessionStore}));
     app.use(express.methodOverride());
     app.use(app.router);
