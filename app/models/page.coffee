@@ -21,13 +21,13 @@ Page.getSorted = ->
 Page.prototype.siblings = ->
     result = []
     if @path == '/'
-        pagePath = '/'
+        path = '/'
     else
-        pagePath = @path.replace(/[^\/]+$/, '')
+        path = @path.replace(/[^\/]+$/, '')
 
     Object.keys(Page.index).forEach (path) ->
-         if path.search(pagePath) != -1
-             if path.replace(pagePath, '').search('/') == -1
+         if path.search(path) != -1
+             if path.replace(path, '').search('/') == -1
                 result.push(Page.index[path])
     result
 
@@ -38,7 +38,7 @@ Page.pathCommentable = (path) ->
     !!Page.index[path]
 
 Page.prototype.loadComments = (done) ->
-    Comment.find {path: @path}, (err, comments) =>
+    Comment.find {patpath: @path}, (err, comments) =>
         @comments = (comments || []).sort (y, x) ->
             x.date.getTime() - y.date.getTime()
         done()

@@ -10,6 +10,7 @@
   , "nodeunit": ">= 0.5.0"
   , "connect-mongodb": ">= 0.3.0"
   , "connect":  ">=1.4.1"
+  , "mongoose": "=1.2.0"
   }
 , "repository":
   { "type": "git"
