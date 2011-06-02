@@ -25,10 +25,10 @@ Page.prototype.siblings = ->
     else
         path = @path.replace(/[^\/]+$/, '')
 
-    Object.keys(Page.index).forEach (path) ->
-         if path.search(path) != -1
-             if path.replace(path, '').search('/') == -1
-                result.push(Page.index[path])
+    Object.keys(Page.index).forEach (pagePath) ->
+         if pagePath.search(path) != -1
+             if pagePath.replace(path, '').search('/') == -1
+                result.push(Page.index[pagePath])
     result
 
 Page.prototype.htmlContent = ->
