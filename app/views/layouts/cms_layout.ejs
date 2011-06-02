@@ -3,7 +3,7 @@
   <head>
     <title><%= title %></title>
     <%- stylesheet_link_tag('reset', 'style') %>
-    <%- javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'rails', 'application') %>
+    <%- javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'rails', 'application', 'http://apis.google.com/js/plusone.js') %>
     <meta name="viewport" content="width=480, initial-scale=0.42">
     <script type="text/javascript">
 
@@ -30,6 +30,9 @@
     <div class="flash error"><%- flash %></div>
     <% }; %>
     <div class="wrap">
+      <div class="social">
+        <g:plusone size="tall"></g:plusone>
+      </div>
       <div class="header">
         <h1 class="title">
           <a href="/">Railway</a><%= page.title !== 'Railway' ? ' / ' + page.title : '' %>
@@ -43,6 +46,8 @@
       </div>
       <div class="content">
         <%- body %>
+      </div>
+      <div>
       </div>
     </div>
   </body>

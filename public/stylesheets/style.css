@@ -181,3 +181,8 @@ form.new-comment {
 .comment .moderate {
   float: right;
 }
+
+.social {
+  padding-top: 20px;
+  float: right;
+}
