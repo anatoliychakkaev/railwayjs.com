@@ -1,3 +1,6 @@
 [submodule ".railway"]
 	path = .railway
 	url = git@github.com:1602/express-on-railway.git
+[submodule "node_modules/twitter"]
+	path = node_modules/twitter
+	url = https://github.com/1602/railway-twitter.git
