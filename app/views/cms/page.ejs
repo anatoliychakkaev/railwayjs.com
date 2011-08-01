@@ -1,64 +1,15 @@
 <%- page.htmlContent() %>
 
 <% if (page.path !== '/') { %>
-  <h2 id="discussion">Discussion</h2>
-
-  <% if (request.session.twitter) { %>
-    <% form_for('', {action: path_to.comments, class: 'new-comment'}, function (form) { %>
-      <div class="comment-header">
-        <% if (request.session.twitter && request.session.twitter.profile_image_url) { %>
-          <img src="<%= request.session.twitter.profile_image_url %>" class="avatar" />
-        <% } %>
-        Leave comment as <%- request.session.twitter.name || request.session.twitter.screen_name %><br />
-      </div>
-      <%- form.input('path', {type: 'hidden', value: page.path}) %>
-      <%- form.textarea('text') %><br />
-      <%- form.submit('Post comment') %>
-    <% }); %>
-  <% } else { %>
-    <%- link_to('Connect with twitter', '/twitter_connect') %> to leave comment.
-  <% } %>
-
-  <% page.comments.forEach(function (comment) { %>
-    <div class="comment">
-      <div class="comment-header">
-        <% if (comment.pic) { %>
-          <img src="<%= comment.pic %>" class="avatar" />
-        <% } %>
-        <%- comment.author %>
-        <%- comment.timeAgo() %>
-        <% if (request.session.twitter && comment.twid == request.session.twitter.id || user) { %>
-          <span class="moderate">
-            <a href="#" onclick="return editComment(this, '<%= path_to.comment(comment) %>');">Edit</a>
-            or
-            <%- link_to('delete', path_to.comment(comment), {remote: true, confirm: 'Are you sure want to delete comment?', method: 'DELETE', jsonp: '(function(){})'}) %>
-            comment
-          </span>
-        <% } %>
-      </div>
-      <div class="comment-body">
-        <%- comment.htmlContent() %>
-      </div>
-    </div>
-  <% }); %>
+  <div class="discussion">
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_shortname = 'railwayjs', disqus_identifier = "<%= post.path %>";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  </div>
 <% } %>
-
-<script>
-  function editComment (el, url) {
-    $.get(url, function (data) {
-      var $parent = $(el).parents('.comment').find('.comment-body');
-      $parent.html('<form action="' + url + '" method="POST" class="new-comment"><textarea name="text"></textarea><input type="hidden" name="_method" value="PUT"><input type="submit" value="Save" /></form>');
-      $parent.find('textarea').val(data.text);
-      $parent.find('form').submit(function (form) {
-        $.post(url, {
-          '_method': 'PUT',
-          'text': $parent.find('textarea').val()
-        }, function (data) {
-          $parent.html(data.html);
-        }, 'json');
-        return false;
-      });
-    }, 'json');
-    return false;
-  }
-</script>
