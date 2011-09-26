@@ -44,6 +44,7 @@
 
 <div class="container">
   <h1 style="text-align: center; font-size: 250%; position: relative; top: 30px;"><span style="color: #a24;">RightwayJS - MVC framework</span><br/><small>Create NodeJS web apps faster with more energy, using RailwayJS</small></h1>
+
   <section id="about"><div class="page-header">
 
 <h1>About Railway <small>Objective, getting started, technical details</small></h1>
@@ -80,11 +81,12 @@
 
 <p>You can use app generator and the scaffold generator to build your first railway app in seconds</p>
 
-<pre class="prettyprint">rw i blog &amp;amp;&amp;amp; cd blog
+<pre class="prettyprint">rw i blog &amp;&amp; cd blog
 npm install -l
 rw g crud post title content
+# ensure mongodb is running
 rw s 8888
-open http://127.0.0.1/posts
+open http://127.0.0.1:8888/posts
 </pre>
 
 </div>
@@ -107,7 +109,7 @@ open http://127.0.0.1/posts
 
 </div>
 
-</div></section><section id="routing"><div class="page-header">
+</div><h6><a href="/about.html#disqus_thread">Discuss on #about</a></h6></section><section id="routing"><div class="page-header">
 
 <h1>Routing</h1>
 
@@ -355,7 +357,7 @@ path_to.edit_post_comment(2, 300)         # /posts/2/comments/300/edit
 
 </div>
 
-</div></section><section id="controller"><div class="page-header">
+</div><h6><a href="/routing.html#disqus_thread">Discuss on #routing</a></h6></section><section id="controller"><div class="page-header">
 
 <h1>Controller <small>middle-layer between models and views</small></h1>
 
@@ -635,7 +637,7 @@ before(use('userRequired'), {only: 'products'});
 
 </div>
 
-</div></section><section id="views"><div class="page-header">
+</div><h6><a href="/controller.html#disqus_thread">Discuss on #controller</a></h6></section><section id="views"><div class="page-header">
 
 <h1>Views <small>layouts, partials, views, helpers, forms, csrf-stuff, etc..</small></h1>
 
@@ -899,9 +901,9 @@ Use this helper when you have no any resource, but still want to be able to use 
 app.set('cssDirectory', '/css/');
 </pre>
 
-<!-- endcol -->
+</div>
 
-<!-- endrow --></section><section id="generators"><div class="page-header">
+</div><h6><a href="/views.html#disqus_thread">Discuss on #views</a></h6></section><section id="generators"><div class="page-header">
 
 <h1>Generators <small>Create app from scratch using generators</small></h1>
 
@@ -1064,7 +1066,7 @@ patch   config/routes.js
 
 </div>
 
-</div></section><section id="console"><div class="page-heading">
+</div><h6><a href="/generators.html#disqus_thread">Discuss on #generators</a></h6></section><section id="console"><div class="page-heading">
 
 <h1>REPL console <small>Learn, debug, investigate</small></h1>
 
@@ -1115,7 +1117,7 @@ railway&gt; _1
 
 </div>
 
-</div></section><section id="coffee"><div class="page-heading">
+</div><h6><a href="/console.html#disqus_thread">Discuss on #console</a></h6></section><section id="coffee"><div class="page-heading">
 
 <h1>Write your app in CoffeeScript <small>Drink coffee &mdash; do stupid things faster with more energy</small></h1>
 
@@ -1132,6 +1134,7 @@ railway&gt; _1
 <div class="span8">
 
 <pre class="prettyprint">rw init blog --coffee
+npm install -l
 cd blog
 rw g scaffold post title content --coffee
 </pre>
@@ -1213,7 +1216,7 @@ action 'destroy', -&gt;
 
 </div>
 
-</div></section><section id="localization"><div class="page-header">
+</div><h6><a href="/coffee.html#disqus_thread">Discuss on #coffee</a></h6></section><section id="localization"><div class="page-header">
 
 <h1>Localization <small>How to build multi-language apps</small></h1>
 
@@ -1311,9 +1314,9 @@ app.configure('production', function () {
 });
 </pre>
 
-<!-- endcol -->
+</div>
 
-<!-- endrow --></section><section id="extensions"><div class="page-header">
+</div><h6><a href="/localization.html#disqus_thread">Discuss on #localization</a></h6></section><section id="extensions"><div class="page-header">
 
 <h1>Extensions API <small>Simple way to add missing functionality to the framework</small></h1>
 
@@ -1406,7 +1409,11 @@ railway database restore
 
 <h2>Discussion in google groups</h2>
 
-<p>API is still in develop now, feel free to leave comments about it in the related google groups <a href="http://groups.google.com/group/railwayjs/browse_thread/thread/1cfa3e1e348fc62c">thread</a>.</p></section><section id="heroku"><div class="page-header">
+<p>API is still in develop now, feel free to leave comments about it in the related google groups <a href="http://groups.google.com/group/railwayjs/browse_thread/thread/1cfa3e1e348fc62c">thread</a>.</p>
+
+</div>
+
+</div><h6><a href="/extensions.html#disqus_thread">Discuss on #extensions</a></h6></section><section id="heroku"><div class="page-header">
 
 <h1>Heroku <small>Guide for deploying RailwayJS app on <a href="http://heroku.com/">Heroku.com</a> cloud hosting</small></h1>
 
@@ -1494,20 +1501,7 @@ then click "Add remote connection" and configure link to database. You can retri
 
 </div>
 
-</div>
-
-</section>
-  <div class="discussion">
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_shortname = 'railwayjs', disqus_identifier = "/";
-      (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-    </script>
-  </div>
+</div><h6><a href="/heroku.html#disqus_thread">Discuss on #heroku</a></h6></section><script>$(function () {$.getScript("http://railwayjs.disqus.com/count.js");})</script>
 </div>
 
 </html>
