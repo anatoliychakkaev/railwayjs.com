@@ -670,7 +670,7 @@ before(use('userRequired'), {only: 'products'});
 
 <p>Every controller action may call <code>render</code> method to display associated view. For example, action <code>index</code> in controller <code>users</code> will render view in file <code>app/views/users/index.ejs</code>.</p>
 
-<p>This view will be rendered within the layout specified by <code>layout</code> call in the controller. By default layout name is the same as controller name, <code>app/views/layouts/users_layout.ejs</code> in this case. If this layout file is not exists, <code>application</code> layout used.</p>
+<p>This view will be rendered within the layout specified by <code>layout</code> call in the controller. By default layout name is the same as controller name, <code>app/views/layouts/users_layout.ejs</code> in this case. If this layout file does not exist, the <code>application</code> layout will used.</p>
 
 <p>If you need render view without layout you can call <code>layout(false)</code> inside controller, this will skip layout rendering.</p>
 
