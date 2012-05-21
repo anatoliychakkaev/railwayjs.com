@@ -1267,6 +1267,7 @@ function setUserLocale () {
     var locale = req.user ? req.user.locale : 'en';
     // call global function setLocale
     setLocale(locale);
+    next();
 }
 </pre>
 
